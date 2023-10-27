@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/utils/color.dart';
 import 'package:food_app/widgets/big_text.dart';
+import 'package:food_app/utils/dimension.dart';
 import 'package:food_app/widgets/icon_and_text.dart';
 import 'package:food_app/widgets/small_text.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -16,7 +17,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentValue = 0.0;
   double scaleFactor = 0.8;
-  double height = 220;
+  double height = Dimension.pageViewController;
 
   @override
   void initState() {
@@ -32,14 +33,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   @override
   void dispose() {
     pageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 300,
+        SizedBox(
+          height: Dimension.pageView,
           child: PageView.builder(
               controller: pageController,
               itemCount: 5,
@@ -50,11 +52,124 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         SmoothPageIndicator(
           controller: pageController,
           count: 5,
-          effect: const WormEffect(
-            dotHeight: 8,
-            dotWidth: 8,
+          effect: WormEffect(
+            dotHeight: Dimension.height8,
+            dotWidth: Dimension.height8,
             activeDotColor: AppColors.mainColor,
             dotColor: Colors.grey,
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(
+            left: Dimension.width30,
+            top: Dimension.height20,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              BigText(text: "Popular"),
+              SizedBox(width: Dimension.width10),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: BigText(
+                  text: ".",
+                  color: Colors.black26,
+                ),
+              ),
+              SizedBox(width: Dimension.width10),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(text: "Food pairing"),
+              ),
+            ],
+          ),
+        ),
+        // list of food and images...
+        SizedBox(
+          height: 900,
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: 10,
+            itemBuilder: (context, position) {
+              return Container(
+                margin: EdgeInsets.only(
+                  left: Dimension.width15,
+                  bottom: Dimension.height10,
+                  right: Dimension.width15,
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      height: Dimension.listviewImageController,
+                      width: Dimension.listviewImageController,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          Dimension.radius20,
+                        ),
+                        color: Colors.white,
+                        image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                            "assets/images/food0.png",
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: Dimension.listViewTextController,
+                        padding: EdgeInsets.only(
+                          left: Dimension.width10,
+                          // top: Dimension.height10,
+                          // bottom: Dimension.height10,
+                          // right: Dimension.width5,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(
+                              Dimension.radius20,
+                            ),
+                            bottomRight: Radius.circular(Dimension.radius20),
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            BigText(text: "Hydrabad Biryani"),
+                            SizedBox(height: Dimension.height10),
+                            SmallText(text: "With Indian Love"),
+                            SizedBox(height: Dimension.height10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconWithText(
+                                  text: 'Normal',
+                                  iconData: Icons.circle,
+                                  iconColor: AppColors.iconColor1,
+                                ),
+                                IconWithText(
+                                  text: '1.7 km',
+                                  iconData: Icons.location_on_outlined,
+                                  iconColor: AppColors.mainColor,
+                                ),
+                                IconWithText(
+                                  text: '32 min',
+                                  iconData: Icons.timer,
+                                  iconColor: AppColors.iconColor2,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ],
@@ -92,10 +207,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: 210,
-            margin: const EdgeInsets.only(left: 10, right: 10),
+            height: Dimension.pageViewController,
+            margin: EdgeInsets.only(
+                left: Dimension.width10, right: Dimension.width10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(Dimension.radius30),
               image: const DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(
@@ -107,11 +223,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 120,
-              margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+              height: Dimension.pageviewTextController,
+              margin: EdgeInsets.only(
+                left: Dimension.width30,
+                right: Dimension.width30,
+                bottom: Dimension.height30,
+              ),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Dimension.radius20),
                 boxShadow: const [
                   BoxShadow(
                     color: Color(0xffe8e8e8),
@@ -129,37 +249,37 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 ],
               ),
               child: Container(
-                padding: const EdgeInsets.only(
-                  top: 15,
-                  left: 15,
-                  right: 15,
+                padding: EdgeInsets.only(
+                  top: Dimension.height15,
+                  left: Dimension.width15,
+                  right: Dimension.width15,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     BigText(text: "Bitter Orange marinade"),
-                    const SizedBox(height: 5),
+                    SizedBox(height: Dimension.height5),
                     Row(
                       children: <Widget>[
                         Wrap(
                           children: List.generate(5, (index) {
-                            return const Icon(
+                            return Icon(
                               Icons.star,
                               color: AppColors.mainColor,
-                              size: 15,
+                              size: Dimension.height15,
                             );
                           }),
                         ),
-                        const SizedBox(width: 10),
+                        SizedBox(width: Dimension.width10),
                         SmallText(text: "4.5"),
-                        const SizedBox(width: 10),
+                        SizedBox(width: Dimension.width10),
                         SmallText(text: "1278"),
-                        const SizedBox(width: 10),
+                        SizedBox(width: Dimension.width10),
                         SmallText(text: "comments"),
                       ],
                     ),
-                    const SizedBox(height: 15),
+                    SizedBox(height: Dimension.height15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

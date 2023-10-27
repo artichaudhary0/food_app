@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/utils/dimension.dart';
 import 'package:food_app/widgets/small_text.dart';
 
+// ignore: must_be_immutable
 class IconWithText extends StatelessWidget {
   IconData iconData;
-  final String text;
+  String text;
   Color iconColor;
-  IconWithText(
-      {Key? key,
-      required this.text,
-      required this.iconData,
-      required this.iconColor})
-      : super(key: key);
+  IconWithText({
+    Key? key,
+    required this.text,
+    required this.iconData,
+    required this.iconColor,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +21,9 @@ class IconWithText extends StatelessWidget {
         Icon(
           iconData,
           color: iconColor,
+          size: Dimension.icon24,
         ),
-        const SizedBox(width: 5),
+        SizedBox(width: Dimension.width5),
         SmallText(text: text),
       ],
     );
