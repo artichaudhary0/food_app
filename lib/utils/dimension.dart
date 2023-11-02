@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 // screenHeight / x (factor to get specific height)
+//740,360
 
 class Dimension {
   static double screenHeight = Get.height;
@@ -47,4 +48,9 @@ class Dimension {
 
   //icon
   static double icon24 = screenHeight / 31; //x= 24
+  static double appIconContainerSize = screenHeight / 16.44; // x = 45
+  static double appIconSize = screenHeight / 46.25; // x = 16
+
+  // popular food
+  static double popularScreenImageSize = screenHeight / 2.11; // x = 350
 }

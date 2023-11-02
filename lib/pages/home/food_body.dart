@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/utils/color.dart';
+import 'package:food_app/widgets/app_column.dart';
 import 'package:food_app/widgets/big_text.dart';
 import 'package:food_app/utils/dimension.dart';
 import 'package:food_app/widgets/icon_and_text.dart';
@@ -85,92 +86,89 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         // list of food and images...
-        SizedBox(
-          height: 900,
-          child: ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 10,
-            itemBuilder: (context, position) {
-              return Container(
-                margin: EdgeInsets.only(
-                  left: Dimension.width15,
-                  bottom: Dimension.height10,
-                  right: Dimension.width15,
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      height: Dimension.listviewImageController,
-                      width: Dimension.listviewImageController,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          Dimension.radius20,
-                        ),
-                        color: Colors.white,
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                            "assets/images/food0.png",
-                          ),
+        ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: 10,
+          itemBuilder: (context, position) {
+            return Container(
+              margin: EdgeInsets.only(
+                left: Dimension.width15,
+                bottom: Dimension.height10,
+                right: Dimension.width15,
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    height: Dimension.listviewImageController,
+                    width: Dimension.listviewImageController,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        Dimension.radius20,
+                      ),
+                      color: Colors.white,
+                      image: const DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                          "assets/images/food0.png",
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        height: Dimension.listViewTextController,
-                        padding: EdgeInsets.only(
-                          left: Dimension.width10,
-                          // top: Dimension.height10,
-                          // bottom: Dimension.height10,
-                          // right: Dimension.width5,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(
-                              Dimension.radius20,
-                            ),
-                            bottomRight: Radius.circular(Dimension.radius20),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: Dimension.listViewTextController,
+                      padding: EdgeInsets.only(
+                        left: Dimension.width10,
+                        // top: Dimension.height10,
+                        // bottom: Dimension.height10,
+                        right: Dimension.width5,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(
+                            Dimension.radius20,
                           ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            BigText(text: "Hydrabad Biryani"),
-                            SizedBox(height: Dimension.height10),
-                            SmallText(text: "With Indian Love"),
-                            SizedBox(height: Dimension.height10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconWithText(
-                                  text: 'Normal',
-                                  iconData: Icons.circle,
-                                  iconColor: AppColors.iconColor1,
-                                ),
-                                IconWithText(
-                                  text: '1.7 km',
-                                  iconData: Icons.location_on_outlined,
-                                  iconColor: AppColors.mainColor,
-                                ),
-                                IconWithText(
-                                  text: '32 min',
-                                  iconData: Icons.timer,
-                                  iconColor: AppColors.iconColor2,
-                                ),
-                              ],
-                            )
-                          ],
+                          bottomRight: Radius.circular(Dimension.radius20),
                         ),
                       ),
-                    )
-                  ],
-                ),
-              );
-            },
-          ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          BigText(text: "Hydrabad Biryani"),
+                          SizedBox(height: Dimension.height10),
+                          SmallText(text: "With Indian Love"),
+                          SizedBox(height: Dimension.height10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconWithText(
+                                text: 'Normal',
+                                iconData: Icons.circle,
+                                iconColor: AppColors.iconColor1,
+                              ),
+                              IconWithText(
+                                text: '1.7 km',
+                                iconData: Icons.location_on_outlined,
+                                iconColor: AppColors.mainColor,
+                              ),
+                              IconWithText(
+                                text: '32 min',
+                                iconData: Icons.timer,
+                                iconColor: AppColors.iconColor2,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
         ),
       ],
     );
@@ -254,54 +252,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   left: Dimension.width15,
                   right: Dimension.width15,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    BigText(text: "Bitter Orange marinade"),
-                    SizedBox(height: Dimension.height5),
-                    Row(
-                      children: <Widget>[
-                        Wrap(
-                          children: List.generate(5, (index) {
-                            return Icon(
-                              Icons.star,
-                              color: AppColors.mainColor,
-                              size: Dimension.height15,
-                            );
-                          }),
-                        ),
-                        SizedBox(width: Dimension.width10),
-                        SmallText(text: "4.5"),
-                        SizedBox(width: Dimension.width10),
-                        SmallText(text: "1278"),
-                        SizedBox(width: Dimension.width10),
-                        SmallText(text: "comments"),
-                      ],
-                    ),
-                    SizedBox(height: Dimension.height15),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconWithText(
-                          text: 'Normal',
-                          iconData: Icons.circle,
-                          iconColor: AppColors.iconColor1,
-                        ),
-                        IconWithText(
-                          text: '1.7 km',
-                          iconData: Icons.location_on_outlined,
-                          iconColor: AppColors.mainColor,
-                        ),
-                        IconWithText(
-                          text: '32 min',
-                          iconData: Icons.timer,
-                          iconColor: AppColors.iconColor2,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+                child: AppColumn(),
               ),
             ),
           ),
