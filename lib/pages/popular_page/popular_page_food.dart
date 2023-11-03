@@ -4,8 +4,6 @@ import 'package:food_app/utils/dimension.dart';
 import 'package:food_app/widgets/app_column.dart';
 import 'package:food_app/widgets/app_icon.dart';
 import 'package:food_app/widgets/big_text.dart';
-import 'package:food_app/widgets/icon_and_text.dart';
-import 'package:food_app/widgets/small_text.dart';
 
 class PopularFoodPage extends StatelessWidget {
   const PopularFoodPage({Key? key}) : super(key: key);
@@ -71,7 +69,9 @@ class PopularFoodPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  AppColumn(),
+                  AppColumn(
+                    text: "Biryani",
+                  ),
                   SizedBox(height: Dimension.height10),
                   BigText(text: "Introduction"),
                 ],
@@ -79,6 +79,67 @@ class PopularFoodPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        height: 120,
+        padding: EdgeInsets.only(
+          left: Dimension.width20,
+          top: Dimension.height30,
+          right: Dimension.width20,
+          bottom: Dimension.height30,
+        ),
+        child: Row(
+          children: [
+            Container(
+              height: 100,
+              padding: EdgeInsets.only(
+                left: Dimension.width20,
+                top: Dimension.height20,
+                right: Dimension.width20,
+                bottom: Dimension.height20,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(
+                  Dimension.radius20,
+                ),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.add),
+                  BigText(text: "0"),
+                  const Icon(Icons.add),
+                ],
+              ),
+            ),
+            SizedBox(width: Dimension.width40),
+            Container(
+              height: 100,
+              padding: EdgeInsets.only(
+                left: Dimension.width20,
+                top: Dimension.height20,
+                right: Dimension.width20,
+                bottom: Dimension.height20,
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.mainColor,
+                borderRadius: BorderRadius.circular(
+                  Dimension.radius20,
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  BigText(
+                    text: "\$0.0B Add to cart",
+                    size: Dimension.font20,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

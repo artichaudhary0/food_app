@@ -6,7 +6,8 @@ import 'package:food_app/widgets/icon_and_text.dart';
 import 'package:food_app/widgets/small_text.dart';
 
 class AppColumn extends StatelessWidget {
-  const AppColumn({Key? key}) : super(key: key);
+  final String text;
+  AppColumn({Key? key, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,10 @@ class AppColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        BigText(text: "Hyadrabadi Biryani"),
+        BigText(
+          text: text,
+          size: Dimension.font26,
+        ),
         SizedBox(height: Dimension.height5),
         Row(
           children: <Widget>[
