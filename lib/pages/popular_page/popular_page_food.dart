@@ -4,6 +4,7 @@ import 'package:food_app/utils/dimension.dart';
 import 'package:food_app/widgets/app_column.dart';
 import 'package:food_app/widgets/app_icon.dart';
 import 'package:food_app/widgets/big_text.dart';
+import 'package:food_app/widgets/expandable_text.dart';
 
 class PopularFoodPage extends StatelessWidget {
   const PopularFoodPage({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class PopularFoodPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
           Positioned(
@@ -74,6 +76,42 @@ class PopularFoodPage extends StatelessWidget {
                   ),
                   SizedBox(height: Dimension.height10),
                   BigText(text: "Introduction"),
+                  SizedBox(height: Dimension.height20),
+                  //  Expandable Text
+                  const Expanded(
+                    child: SingleChildScrollView(
+                      child: ExpandableText(
+                        text: "Food is essential for survival."
+                            " Everyone has their own personal choice of a favourite food."
+                            " Here, in this article, we have brought to you a simple"
+                            " and engrossing My Favourite Food Essay for Class 3 kids"
+                            " to simplify the essay writing process and captivate their"
+                            " interest in writing a fascinating essay of 10 lines on the"
+                            " food they love the most."
+                            " Food is essential for survival."
+                            " Everyone has their own personal choice of a favourite food."
+                            " Here, in this article, we have brought to you a simple"
+                            " and engrossing My Favourite Food Essay for Class 3 kids"
+                            " to simplify the essay writing process and captivate their"
+                            " interest in writing a fascinating essay of 10 lines on the"
+                            " food they love the most."
+                            " Food is essential for survival."
+                            " Everyone has their own personal choice of a favourite food."
+                            " Here, in this article, we have brought to you a simple"
+                            " and engrossing My Favourite Food Essay for Class 3 kids"
+                            " to simplify the essay writing process and captivate their"
+                            " interest in writing a fascinating essay of 10 lines on the"
+                            " food they love the most."
+                            " Food is essential for survival."
+                            " Everyone has their own personal choice of a favourite food."
+                            " Here, in this article, we have brought to you a simple"
+                            " and engrossing My Favourite Food Essay for Class 3 kids"
+                            " to simplify the essay writing process and captivate their"
+                            " interest in writing a fascinating essay of 10 lines on the"
+                            " food they love the most.",
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -81,17 +119,28 @@ class PopularFoodPage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        height: 120,
+        height: Dimension.bottomHeightBar,
         padding: EdgeInsets.only(
           left: Dimension.width20,
-          top: Dimension.height30,
+          top: Dimension.height10,
           right: Dimension.width20,
-          bottom: Dimension.height30,
+          bottom: Dimension.height10,
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.buttonBackgroundColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(
+              Dimension.radius20 * 2,
+            ),
+            topRight: Radius.circular(
+              Dimension.radius20 * 2,
+            ),
+          ),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              height: 100,
               padding: EdgeInsets.only(
                 left: Dimension.width20,
                 top: Dimension.height20,
@@ -106,15 +155,21 @@ class PopularFoodPage extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.add),
+                  const Icon(
+                    Icons.remove,
+                    color: AppColors.signColor,
+                  ),
+                  SizedBox(width: Dimension.width5),
                   BigText(text: "0"),
-                  const Icon(Icons.add),
+                  SizedBox(width: Dimension.width5),
+                  const Icon(
+                    Icons.add,
+                    color: AppColors.signColor,
+                  ),
                 ],
               ),
             ),
-            SizedBox(width: Dimension.width40),
             Container(
-              height: 100,
               padding: EdgeInsets.only(
                 left: Dimension.width20,
                 top: Dimension.height20,
@@ -131,8 +186,7 @@ class PopularFoodPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   BigText(
-                    text: "\$0.0B Add to cart",
-                    size: Dimension.font20,
+                    text: "\$10.0B | Add to cart",
                     color: Colors.white,
                   ),
                 ],

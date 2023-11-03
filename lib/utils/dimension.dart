@@ -28,8 +28,10 @@ class Dimension {
 
   // size of fonts
   static double font12 = screenHeight / 61.66; // x = 12
+  static double font18 = screenHeight / 49.11; // x = 18
   static double font20 = screenHeight / 37; // x=20
   static double font26 = screenHeight / 28.46; // x = 26
+  
 
   // radius
   static double radius15 = screenHeight / 49.33; // x=15
@@ -54,4 +56,7 @@ class Dimension {
 
   // popular food
   static double popularScreenImageSize = screenHeight / 2.11; // x = 350
+
+  // bottom height bar
+  static double bottomHeightBar = screenWidth / 3.5; // x = 120
 }

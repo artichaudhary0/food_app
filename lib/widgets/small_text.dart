@@ -21,6 +21,7 @@ class SmallText extends StatelessWidget {
     return Text(
       text,
       overflow: overflow,
+      maxLines: 100,
       style: TextStyle(
         color: color,
         fontSize: size == 0 ? Dimension.font12 : size,
