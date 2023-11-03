@@ -50,7 +50,7 @@ class _ExpandableTextState extends State<ExpandableText> {
               children: [
                 SmallText(
                   text: hiddenText
-                      ? (firstHalf + "...")
+                      ? ("$firstHalf...")
                       : (firstHalf + secondHalf),
                   size: Dimension.font18,
                   color: AppColors.paraColor,
