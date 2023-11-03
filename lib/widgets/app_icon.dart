@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/utils/dimension.dart';
 
+// ignore: must_be_immutable
 class AppIcon extends StatelessWidget {
   IconData iconData;
   Color backgroundColor;
   Color iconColor;
   double size;
+  double iconSize;
 
   AppIcon({
     Key? key,
@@ -13,6 +14,7 @@ class AppIcon extends StatelessWidget {
     this.backgroundColor = const Color(0xfffcf4e4),
     required this.iconData,
     this.size = 45,
+    this.iconSize = 16,
   }) : super(key: key);
 
   @override
@@ -29,7 +31,7 @@ class AppIcon extends StatelessWidget {
       child: Icon(
         iconData,
         color: iconColor,
-        size: Dimension.appIconSize,
+        size: iconSize,
       ),
     );
   }

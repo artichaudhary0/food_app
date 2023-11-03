@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/pages/popular_page/popular_page_food.dart';
+import 'package:food_app/pages/popular_page/recommended_food_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
       ),
       debugShowCheckedModeBanner: false,
-      home: const PopularFoodPage(),
+      home: const RecommendedFoodPage(),
     );
   }
 }
